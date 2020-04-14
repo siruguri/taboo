@@ -1,1 +1,5 @@
-the word is <%= @word.label %>
+<%- if @is_player %>
+  It's your turn! Your word is <%= @word.label %>
+<%- else %>
+  It's not your turn yet.
+<% end %>

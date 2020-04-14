@@ -63,9 +63,31 @@ class GamesController < ApplicationController
 
   def play
     g = Game.find params[:id]
-    min_count = g.word_selections.select('min(play_count) as minp')[0].attributes['minp']
 
-    @word = g.word_selections.where(play_count: min_count).sample.word
+    allowed = true
+    if !current_user
+      flash[:notice] = "You have to login to play the game."
+      allowed = false
+    end
+
+    words = g.word_selections
+
+    if words.size == 0
+      flash[:notice] = "There are no words assigned to this game."
+      allowed = false
+    end
+
+    if !allowed
+      redirect_to games_path
+    else
+      if g.current_player != current_user
+        @is_player = false
+      else
+        @is_player = true
+        min_count = g.word_selections.select('min(play_count) as minp')[0].attributes['minp']
+        @word = g.word_selections.where(play_count: min_count).sample.word
+      end
+    end
   end
 
   private

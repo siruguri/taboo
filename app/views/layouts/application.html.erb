@@ -10,8 +10,9 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p id="notice"><%= notice %></p>
+
+    <%= render partial: 'partials/login_bar' %>
     <%= yield %>
   </body>
 </html>

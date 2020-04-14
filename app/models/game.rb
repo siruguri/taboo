@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  has_many :word_selections
+  has_many :word_selections, inverse_of: :game
   has_many :words, through: :word_selections
 
   has_many :game_players

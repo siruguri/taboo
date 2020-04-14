@@ -1,0 +1,6 @@
+.div.login-bar
+  - if current_user
+    Logged in as #{current_user.name}
+    = link_to 'Logout', destroy_user_session_path, method: :delete
+  - else
+    = link_to 'login', new_user_session_path
