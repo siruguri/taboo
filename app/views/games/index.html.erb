@@ -13,7 +13,17 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.name %></td>
-        <td><%= link_to 'Play', play_game_path(game) %></td>
+        <% if game.current_player %>
+          <td>current player: <%= game.current_player.name %></td>
+          <td>total players: <%= game.players.count %></td>
+        <% end %>
+
+        <% if game.word_selections.count > 0 %>
+          <td><%= link_to 'Play', play_game_path(game) %></td>
+        <% else %>
+          <td>Assign words first </td>
+        <% end %>
+
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
