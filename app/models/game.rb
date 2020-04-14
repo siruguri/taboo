@@ -11,7 +11,7 @@ class Game < ApplicationRecord
     turn&.delete
     u = players.sample
 
-    order = players.select { |p| p.id != u.id }.map { |u| u.id }
+    order = players.map { |u| u.id }.sample(players.size)
     unless u.nil?
       Turn.create game: self, current_player: u, order: order
     end

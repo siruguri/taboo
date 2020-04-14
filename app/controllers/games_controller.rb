@@ -90,6 +90,23 @@ class GamesController < ApplicationController
     end
   end
 
+  def rotate
+    @g = Game.find params[:id]
+    t = @g.turn
+    order = t.order
+
+    (_, index) = order.each_with_index.find { |i, idx| i == current_user.id }
+    new_user_index = (index + 1) % order.size
+
+    @new_user = User.find(order[new_user_index])
+    t.current_player = @new_user
+    t.save!
+
+    flash[:notice] = "The game has been rotated to #{@new_user.name}. Please tell them."
+
+    redirect_to play_game_path(@g)
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_game

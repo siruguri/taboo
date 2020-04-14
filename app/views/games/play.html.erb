@@ -1,5 +1,10 @@
 <%- if @is_player %>
   It's your turn! Your word is <%= @word.label %>
+  <form action='<%= rotate_game_path %>' >
+    <input type=submit value='Rotate to next player'>
+    <input type=hidden name=id value=<%=params[:id] %>>
+  </form>
+    
 <%- else %>
   It's not your turn yet.
 <% end %>
