@@ -1,0 +1,14 @@
+s11:
+  game: game1
+  word: w1
+  play_count: 1
+
+s12:
+  game: game1
+  word: w2
+  play_count: 2
+
+s13:
+  game: game1
+  word: w3
+  play_count: 3

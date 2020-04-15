@@ -93,14 +93,9 @@ class GamesController < ApplicationController
   def rotate
     @g = Game.find params[:id]
     t = @g.turn
-    order = t.order
 
-    (_, index) = order.each_with_index.find { |i, idx| i == current_user.id }
-    new_user_index = (index + 1) % order.size
-
-    @new_user = User.find(order[new_user_index])
-    t.current_player = @new_user
-    t.save!
+    @g.increment_current_word!
+    @new_user = t.rotate! current_user
 
     flash[:notice] = "The game has been rotated to #{@new_user.name}. Please tell them."
 
