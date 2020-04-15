@@ -84,8 +84,7 @@ class GamesController < ApplicationController
         @is_player = false
       else
         @is_player = true
-        min_count = g.word_selections.select('min(play_count) as minp')[0].attributes['minp']
-        @word = g.word_selections.where(play_count: min_count).sample.word
+        @word = g.current_word
       end
     end
   end

@@ -7,7 +7,7 @@ class Turn < ApplicationRecord
     new_user_index = (index + 1) % order.size
 
     new_user = User.find(order[new_user_index])
-    current_player = new_user
+    self.current_player = new_user
     save!
 
     new_user
