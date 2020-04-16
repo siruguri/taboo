@@ -8,7 +8,7 @@ class WordAssigner
   def assign!
     WordSelection.where(game: game).delete_all
 
-    Word.all.to_a.sample(10).each do |word|
+    Word.all.to_a.sample(Word.count).each do |word|
       game.words << word
     end
 

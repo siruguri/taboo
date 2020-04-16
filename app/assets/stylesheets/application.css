@@ -13,3 +13,5 @@
  *= require_tree .
  *= require_self
  */
+
+.login-bar { margin-bottom: 10px; border-bottom: solid 2px black; }

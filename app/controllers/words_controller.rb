@@ -1,20 +1,28 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
 
-  # GET /words
-  # GET /words.json
   def index
     @words = Word.all
   end
 
-  # GET /words/1
-  # GET /words/1.json
-  def show
+  def add_form
   end
 
-  # GET /words/new
-  def new
-    @word = Word.new
+
+  def add_words
+    @words = params[:wordlist].split("\n")
+
+    @new_word_count = 0
+    @words.map { |w| w.strip.downcase }.each do |w|
+      w = Word.find_or_initialize_by label: w
+      if w.id.nil?
+        @new_word_count += 1 
+        w.save!
+      end
+    end
+
+    flash[:new_word_count] = @new_word_count
+    redirect_to add_form_words_path
   end
 
   # GET /words/1/edit
