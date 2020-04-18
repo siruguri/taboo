@@ -11,6 +11,8 @@ class WordAssigner
     WordSelection.where(game: game).delete_all
 
     ws = Word.where.not(id: existing_word_ids)
+    return if ws.count == 1
+
     ws.to_a.sample(ws.count).each do |word|
       game.words << word
     end

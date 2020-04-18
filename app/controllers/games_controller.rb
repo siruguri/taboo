@@ -62,7 +62,7 @@ class GamesController < ApplicationController
   end
 
   def play
-    g = Game.find params[:id]
+    @game = Game.find params[:id]
 
     allowed = true
     if !current_user
@@ -70,7 +70,7 @@ class GamesController < ApplicationController
       allowed = false
     end
 
-    words = g.word_selections
+    words = @game.word_selections
 
     if words.size == 0
       flash[:notice] = "There are no words assigned to this game."
@@ -80,12 +80,12 @@ class GamesController < ApplicationController
     if !allowed
       redirect_to games_path
     else
-      if g.current_player != current_user
+      if @game.current_player != current_user
         @is_player = false
-        @current_player = g.current_player
+        @current_player = @game.current_player
       else
         @is_player = true
-        @word = g.current_word
+        @word = @game.current_word
       end
     end
   end

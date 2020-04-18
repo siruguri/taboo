@@ -3,8 +3,8 @@
     It's your turn!
   </div>
 
-  <div class='word'>
-    Your word is <%= @word.label %>
+  <div class='word-announce'>
+    Your word is <span class='word'> <%= @word.label %></span>
   </div>
 
   <form action='<%= rotate_game_path %>' >
@@ -13,5 +13,7 @@
   </form>
 
 <%- else %>
-  It's not your turn yet.
+  It's not your turn yet because
+  <span class='player-name'><%= @current_player.name %></span>
+  is playing. To check if the turn has returned to you, <%= link_to 'refresh this screen', play_game_path(@game) %>
 <% end %>

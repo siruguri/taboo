@@ -1,0 +1,21 @@
+.login-bar { margin-bottom: 10px; border-bottom: solid 2px black; }
+.link-list {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #EEE;
+  color: black;
+}
+
+.word-announce {
+  background-color: #DDD;
+  padding: 15px;
+  margin-bottom: 70px;
+  .word {  color: #DD6000;   font-weight: 600; }
+}
+
+.player-name {
+  color: #6ebce9;
+  font-weight: 600;
+}
