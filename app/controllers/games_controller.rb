@@ -82,6 +82,7 @@ class GamesController < ApplicationController
     else
       if g.current_player != current_user
         @is_player = false
+        @current_player = g.current_player
       else
         @is_player = true
         @word = g.current_word

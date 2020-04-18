@@ -23,3 +23,11 @@
   background-color: #EEE;
   color: black;
 }
+
+.word {
+  background-color: #DDD;
+  color: #DD6000;
+  padding: 15px;
+  margin-bottom: 70px;
+  font-weight: 600;
+}
