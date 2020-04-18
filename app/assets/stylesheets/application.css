@@ -15,3 +15,11 @@
  */
 
 .login-bar { margin-bottom: 10px; border-bottom: solid 2px black; }
+.link-list {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #EEE;
+  color: black;
+}
