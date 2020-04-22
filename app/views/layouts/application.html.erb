@@ -4,7 +4,7 @@
     <title>Taboo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,7 +12,12 @@
   <body>
     <p id="notice"><%= notice %></p>
 
-    <%= render partial: 'partials/login_bar' %>
-    <%= yield %>
+    <div class="container">
+      <%= render partial: 'partials/login_bar' %>
+    </div>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

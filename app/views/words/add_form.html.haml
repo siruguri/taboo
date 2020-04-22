@@ -1,9 +1,15 @@
 - if flash[:new_word_count]
-  Added #{flash[:new_word_count]} words
+  .row
+    .col
+      Added #{flash[:new_word_count]} words
 
-%form{method: :post, action: add_words_words_path}
-  = hidden_field_tag :authenticity_token, form_authenticity_token 
-  %label{for: :wordlist}
-    Add words, one each on a line
-  %textarea{rows: 10, name: :wordlist}
-  %input{type: :submit}
+.row
+  %form{method: :post, action: add_words_words_path}
+    = hidden_field_tag :authenticity_token, form_authenticity_token 
+    .col
+      %label{for: :wordlist}
+        Add words, one each on a line
+    .col
+      %textarea{rows: 10, name: :wordlist}
+    .col
+      %input{type: :submit}

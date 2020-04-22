@@ -1,11 +1,17 @@
-.div.login-bar
+.login-bar
   - if current_user
-    Logged in as #{current_user.name}
-    .link-list
-      = link_to 'Logout', destroy_user_session_path, method: :delete
-    .link-list
-      = link_to 'Add words', add_form_words_path
-    .link-list
-      = link_to 'Games', games_path
+    .row
+      .col
+        Logged in as #{current_user.name}
+        .link-list
+          = link_to 'Logout', destroy_user_session_path, method: :delete
+    .row
+      .col-5
+        .link-list
+          = link_to 'Add words', add_form_words_path
+      .col-2
+        .link-list
+          = link_to 'Games', games_path
   - else
-    = link_to 'login', new_user_session_path
+    .col
+      = link_to 'login', new_user_session_path
