@@ -1,0 +1,22 @@
+- if @is_player
+  %div{style: 'margin-bottom: 20px;'}
+    It's your turn!
+
+  .word-announce
+    Your word is
+    %span.word= @word.label
+
+  %form{action: rotate_game_path}
+    %input.btn.btn-primary{ type: 'submit', value: 'Rotate to next player'}
+    %input{type: 'hidden', name: 'id', value: params[:id]}
+
+- else
+  It's not your turn yet because
+  %span.player-name= @current_player.name
+  is playing. To check if the turn has returned to you,
+  = link_to 'refresh this screen', play_game_path(@game)
+
+.form-div
+  %textarea#message-body
+  %button.btn.btn-primary#message-submit{type: 'button'}
+    Submit
