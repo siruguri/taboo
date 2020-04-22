@@ -1,14 +1,16 @@
 - if @is_player
-  %div{style: 'margin-bottom: 20px;'}
-    It's your turn!
+  .row
+    .col{style: 'margin-bottom: 20px;'}
+      It's your turn!
+  .row
+    .word-announce.col
+      Your word is
+      %span.word= @word.label
 
-  .word-announce
-    Your word is
-    %span.word= @word.label
-
-  %form{action: rotate_game_path}
-    %input.btn.btn-primary{ type: 'submit', value: 'Rotate to next player'}
-    %input{type: 'hidden', name: 'id', value: params[:id]}
+    .col
+      %form{action: rotate_game_path}
+        %input.btn.btn-primary{ type: 'submit', value: 'Rotate to next player'}
+          %input{type: 'hidden', name: 'id', value: params[:id]}
 
 - else
   It's not your turn yet because
@@ -17,6 +19,12 @@
   = link_to 'refresh this screen', play_game_path(@game)
 
 .form-div
-  %textarea#message-body
-  %button.btn.btn-primary#message-submit{type: 'button'}
-    Submit
+  .title
+    Chat Box
+  .row
+    .col
+      %textarea#message-body
+    .col
+      %button.btn.btn-primary#message-submit{type: 'button'}
+        Submit
+.chat-box#chat-box

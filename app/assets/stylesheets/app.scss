@@ -19,7 +19,7 @@ textarea {
 .word-announce {
   background-color: #DDD;
   padding: 15px;
-  margin-bottom: 70px;
+
   .word {  color: #DD6000;   font-weight: 600; }
 }
 
@@ -31,5 +31,14 @@ textarea {
 .form-div {
   margin-top: 40px;
   button { margin-top: 40px; }
+
+  #message-body { height: 75px; width: 100%; }
 }
 
+.chat-box {
+  border: black solid 1px;
+  max-height: 350px;
+  overflow-y: scroll;
+
+  .name { color: blue; font-weight: bold; margin-top: 5px; }
+}

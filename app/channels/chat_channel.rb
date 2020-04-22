@@ -8,8 +8,11 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def send_message(data)
-    b = data['message']['body']
+    b = data['body']
 
-    Message.create body: b, author: current_user
+    m = Message.create body: b, author: current_user
+
+    ActionCable.server.broadcast 'main_room', message: {body: m.body, author: current_user.name}
   end
+
 end
