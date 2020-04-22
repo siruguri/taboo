@@ -1,14 +1,32 @@
+DEFAULTS: &DEFAULTS
+  status: <%= WordSelection.statuses['active'] %>
+
 s11:
+  <<: *DEFAULTS
   game: game1
   word: w1
   play_count: 1
 
 s12:
+  <<: *DEFAULTS
   game: game1
   word: w2
   play_count: 2
 
 s13:
+  <<: *DEFAULTS
   game: game1
   word: w3
   play_count: 3
+
+s22:
+  <<: *DEFAULTS
+  game: game2
+  word: w2
+  play_count: 1
+
+s21:
+  <<: *DEFAULTS
+  game: game2
+  word: w1
+  play_count: 0

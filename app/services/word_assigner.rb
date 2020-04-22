@@ -1,4 +1,7 @@
 class WordAssigner
+  class NotEnoughWords < Exception
+  end
+
   def initialize(game)
     @game = game
   end
@@ -6,15 +9,15 @@ class WordAssigner
   attr_reader :game
 
   def assign!
-    existing_word_ids = game.words.pluck :id
+    WordSelection.where(game: game).update_all status: :inactive
 
-    WordSelection.where(game: game).delete_all
+    ws = Word.left_joins(:word_selections)
+           .where(word_selections: {id: nil})
 
-    ws = Word.where.not(id: existing_word_ids)
-    return if ws.count == 1
+    raise NotEnoughWords.new('Not enough words left to assign to this game.') if ws.count <= 1
 
     ws.to_a.sample(ws.count).each do |word|
-      game.words << word
+      WordSelection.create game: game, word: word, status: :active
     end
 
     game.start!
