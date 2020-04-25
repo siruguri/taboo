@@ -8,6 +8,8 @@ class Game < ApplicationRecord
   has_one :turn
   belongs_to :current_word, class_name: 'Word', optional: true
 
+  validates_presence_of :name
+
   def words
     Word.joins(:word_selections).where(word_selections: {game_id: self.id, status: :active})
   end
@@ -26,7 +28,7 @@ class Game < ApplicationRecord
   end
 
   def current_player
-    turn.current_player
+    turn&.current_player
   end
 
   def increment_current_word!

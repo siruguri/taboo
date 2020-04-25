@@ -8,6 +8,9 @@
         <% if game.current_player %>
           <td>current player: <%= game.current_player.name %></td>
           <td>total players: <%= game.players.count %></td>
+        <% else %>
+          <td>Game has no players yet</td>
+          <td/>
         <% end %>
 
         <% if game.word_selections.count > 0 %>

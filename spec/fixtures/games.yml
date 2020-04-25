@@ -1,4 +1,5 @@
 game1:
   name: game1
 game2:
+  name: game2
   current_word: w2
