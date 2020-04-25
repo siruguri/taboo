@@ -28,17 +28,21 @@ textarea {
   font-weight: 600;
 }
 
-.form-div {
-  margin-top: 40px;
-  button { margin-top: 40px; }
+.chat {
+  max-width: 90%;
+  margin: 0 auto;
+  .form-div {
+    margin-top: 40px;
+    button { margin-top: 40px; }
 
-  #message-body { height: 75px; width: 100%; }
-}
+    #message-body { height: 75px; width: 100%; }
+  }
 
-.chat-box {
-  border: black solid 1px;
-  max-height: 350px;
-  overflow-y: scroll;
+  .chat-box {
+    border: black solid 1px;
+    max-height: 350px;
+    overflow-y: scroll;
 
-  .name { color: blue; font-weight: bold; margin-top: 5px; }
+    .name { color: blue; font-weight: bold; margin-top: 5px; }
+  }
 }

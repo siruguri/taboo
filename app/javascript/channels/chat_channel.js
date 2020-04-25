@@ -34,8 +34,11 @@ var channel = consumer.subscriptions.create("ChatChannel", {
   }
 });
 
+
 $(document).on('turbolinks:load', function() {
-  $('#message-submit').click(function() {
+  let elt = document.getElementById('message-submit')
+  
+  $(elt).click(function() {
     var box = $('#message-body')
     var message_body = box.val()
 
