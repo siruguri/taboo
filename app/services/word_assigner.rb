@@ -8,8 +8,10 @@ class WordAssigner
 
   attr_reader :game
 
-  def assign!
-    WordSelection.where(game: game).update_all status: :inactive
+  def assign!(start_fresh: false)
+    if start_fresh
+      WordSelection.where(game: game).update_all status: :inactive
+    end
 
     ws = Word.left_joins(:word_selections)
            .where(word_selections: {id: nil})
