@@ -1,5 +1,5 @@
-.play-info
-  - if @is_player
+.play-info{data: {controller: 'games', games: {id: @game.id } }}
+  .current-player-screen{class: !@is_player ? 'hidden' : '' }
     .row
       .col{style: 'margin-bottom: 20px;'}
         It's your turn!
@@ -9,14 +9,17 @@
         %span.word= @word.label
 
       .col
-        %form{action: rotate_game_path}
-          %input.btn.btn-primary{ type: 'submit', value: 'Rotate to next player'}
-            %input{type: 'hidden', name: 'id', value: params[:id]}
+        .game-submit
+          %input.btn.btn-primary{ type: 'submit', value: 'Rotate to next player', |
+                                  data: {action: 'games#submit'} }
 
-  - else
+
+  .other-player-screen{class: @is_player ? 'hidden' : '' }
     It's not your turn yet because
-    %span.player-name= @current_player.name
+    %span.player-name{data: {target: 'games.player'}}
+      #{@current_player.name}
     is playing. To check if the turn has returned to you,
+
     = link_to 'refresh this screen', play_game_path(@game)
 
 .chat.newbox

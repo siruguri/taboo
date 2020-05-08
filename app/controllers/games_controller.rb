@@ -7,20 +7,6 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
-  # GET /games/1
-  # GET /games/1.json
-  def show
-  end
-
-  # GET /games/new
-  def new
-    @game = Game.new
-  end
-
-  # GET /games/1/edit
-  def edit
-  end
-
   # POST /games
   # POST /games.json
   def create
@@ -80,9 +66,10 @@ class GamesController < ApplicationController
     if !allowed
       redirect_to games_path
     else
-      if @game.current_player != current_user
+      @current_player = @game.current_player
+      if @current_player != current_user
         @is_player = false
-        @current_player = @game.current_player
+        @word = Struct.new(:label).new('')
       else
         @is_player = true
         @word = @game.current_word
@@ -97,9 +84,7 @@ class GamesController < ApplicationController
     @g.increment_current_word!
     @new_user = t.rotate! current_user
 
-    flash[:notice] = "The game has been rotated to #{@new_user.name}. Please tell them."
-
-    redirect_to play_game_path(@g)
+    render json: @new_user
   end
 
   private
