@@ -13,8 +13,8 @@
           <td/>
         <% end %>
 
-        <% if game.word_selections.count > 0 %>
-          <td><%= link_to 'Play', play_game_path(game) %></td>
+        <% if active_words_count(game) > 0 %>
+          <td><%= active_words_count(game) %> words available. <%= link_to 'Play', play_game_path(game) %></td>
         <% else %>
           <td>Assign words first </td>
         <% end %>
