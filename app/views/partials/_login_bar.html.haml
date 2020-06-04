@@ -1,17 +1,20 @@
 .login-bar
-  - if current_user
-    .row
-      .col
+  .row
+    .col-6
+      - if current_user
         Logged in as #{current_user.name}
-        .link-list
+        .logout
           = link_to 'Logout', destroy_user_session_path, method: :delete
-    .row
+      - else
+        .col.login-button
+          = link_to 'login', new_user_session_path
+    .col-6
+      
+  - if current_user
+    .row.linklist
       .col-5
-        .link-list
+        %button.btn.btn-secondary.d-inline-block
           = link_to 'Add words', add_form_words_path
-      .col-2
-        .link-list
-          = link_to 'Games', games_path
-  - else
-    .col
-      = link_to 'login', new_user_session_path
+      .col-7
+        %button.btn.btn-secondary.d-inline-block
+          = link_to 'All games', games_path

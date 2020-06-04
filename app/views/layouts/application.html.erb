@@ -10,14 +10,26 @@
   </head>
 
   <body>
-    <p id="notice"><%= notice %></p>
+    <div class="container">
+      <% if notice %>
+        <div class=row>
+          <div class='alert alert-danger col text-center'>
+            <p id="notice"><%= notice %></p>
+          </div>
+        </div>
+      <% end %>
 
-    <div class="container">
-      <%= render partial: 'partials/login_bar' %>
-    </div>
-    
-    <div class="container">
-      <%= yield %>
+      <% unless params[:controller] == 'devise/sessions' %>
+        <div class=row>
+          <div class='col'>
+            <%= render partial: 'partials/login_bar' %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

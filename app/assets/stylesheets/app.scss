@@ -1,3 +1,5 @@
+@import 'variables';
+
 .hidden {
   display: none;
 }
@@ -9,17 +11,21 @@ textarea {
 .login-bar {
   margin-bottom: 10px; border-bottom: solid 2px black;
   .row { padding-bottom: 10px; }
+  .login-button {
+    padding: 15px; background: $green; font-size: 1.2rem;
+    a { color: white; }
+  }
+  .logout {
+    display: inline-block;
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #EEE;
+    a { color: #222; } 
+  }
 }
 
-.link-list {
-  display: inline-block;
-  margin-right: 5px;
-  padding: 5px;
-  border-radius: 3px;
-  background-color: #EEE;
-  color: black;
-}
-
+button.btn a { color: white; }
 .word-announce {
   background-color: #DDD;
   padding: 15px;

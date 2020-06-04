@@ -12,6 +12,8 @@ require("src/chat")
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 
+import 'stylesheets/bs4'
+
 const application = Application.start()
 const context = require.context("../controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))

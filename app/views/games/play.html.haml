@@ -1,4 +1,6 @@
-.play-info{data: {controller: 'games', games: {id: @game.id } }}
+.bs4-full
+  .play-info{data: {controller: 'games', games: {id: @game.id } }}
+
   .current-player-screen{class: !@is_player ? 'hidden' : '' }
     .row
       .col{style: 'margin-bottom: 20px;'}
@@ -14,22 +16,27 @@
                                   data: {action: 'games#submit'} }
 
 
-  .other-player-screen{class: @is_player ? 'hidden' : '' }
-    It's not your turn yet because
-    %span.player-name{data: {target: 'games.player'}}
-      #{@current_player.name}
-    is playing. To check if the turn has returned to you,
+  .row.other-player-screen{class: @is_player ? 'hidden' : '' }
+    .col
+      It's not your turn yet because
+      %span.player-name{data: {target: 'games.player'}}
+        #{@current_player.name}
+      is playing. To check if the turn has returned to you,
+  .row
+    .col
+      %button.btn.btn-primary
+        = link_to 'refresh this screen', play_game_path(@game)
 
-    = link_to 'refresh this screen', play_game_path(@game)
-
-.chat.newbox
-  .form-div
-    .title
-      Chat Box
-    .row
-      .col
-        %textarea#message-body
-      .col
-        %button.btn.btn-primary#message-submit{type: 'button'}
-          Submit
-  .chat-box#chat-box
+  .row.chat.newbox
+    .col.form-div
+      .title
+        Chat Box
+  .row
+    .col
+      %textarea#message-body
+    .col
+      %button.btn.btn-primary#message-submit{type: 'button'}
+        Submit
+  .row
+    .col
+      .chat-box#chat-box
