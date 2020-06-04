@@ -1,32 +1,33 @@
-.bs4
-  .row
+.row
+  .col
     %h2
       Log in
-  .row
-    .col-12
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .row
-          .col
-            .field
-              = f.label :email
-        .row
-          .col
-            = f.text_field :email, autofocus: true, autocomplete: "email"
 
-        .row
-          .col-12.field
-            = f.label :password
-          .col-12
-            = f.password_field :password, autocomplete: "current-password"
+.row
+  .col-12
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .row
+        .col
+          .field
+            = f.label :email
+      .row
+        .col
+          = f.text_field :email, autofocus: true, autocomplete: "email"
 
-        - if devise_mapping.rememberable?
-          .row
-            .col.field
-              = f.check_box :remember_me
-              = f.label :remember_me
-        .row
-          .actions.col-12
-            = f.submit "Log in"
+      .row
+        .col-12.field
+          = f.label :password
+        .col-12
+          = f.password_field :password, autocomplete: "current-password"
 
-    .col-12
-      = render "devise/shared/links"
+      - if devise_mapping.rememberable?
+        .row
+          .col.field
+            = f.check_box :remember_me
+            = f.label :remember_me
+      .row
+        .actions.col-12
+          = f.submit "Log in"
+
+  .col-12
+    = render "devise/shared/links"

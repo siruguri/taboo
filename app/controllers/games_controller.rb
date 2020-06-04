@@ -77,6 +77,13 @@ class GamesController < ApplicationController
     end
   end
 
+  def refresh
+    # Return the current player's ID
+    g = Game.find params[:id]
+    current_player = g.current_player
+    render json: { current_player_id: current_player.id, current_word: g.current_word.label }
+  end
+
   def rotate
     @g = Game.find params[:id]
     t = @g.turn

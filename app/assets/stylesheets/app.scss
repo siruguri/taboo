@@ -1,7 +1,7 @@
 @import 'variables';
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 textarea {

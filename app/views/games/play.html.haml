@@ -1,42 +1,42 @@
 .bs4-full
-  .play-info{data: {controller: 'games', games: {id: @game.id } }}
+  .play-info{data: {controller: 'games', games: {id: @game.id, userid: current_user.id, gameid: @game.id } } }
+    .current-player-screen{class: !@is_player ? 'hidden' : '' }
+      .row
+        .col{style: 'margin-bottom: 20px;'}
+          It's your turn!
+      .row
+        .col.word-announce
+          Your word is
+          %span#word.word= @word.label
 
-  .current-player-screen{class: !@is_player ? 'hidden' : '' }
-    .row
-      .col{style: 'margin-bottom: 20px;'}
-        It's your turn!
-    .row
-      .col.word-announce
-        Your word is
-        %span.word= @word.label
+        .col
+          .game-submit
+            %input.btn.btn-primary{ type: 'submit', value: 'Rotate to next player', |
+                                    data: {action: 'games#submit'} }
 
+
+    .other-player-screen{class: @is_player ? 'hidden' : '' }
+      .row
+        .col
+          It's not your turn yet because
+          %span.player-name{data: {target: 'games.player'}}
+            #{@current_player.name}
+          is playing. To check if the turn has returned to you,
+      .row
+        .col
+          %button.btn.btn-primary{data: {action: 'games#refresh'} }
+            Refresh this screen
+
+    .row.chat
+      .col.form-div
+        .title
+          Chat Box
+    .row
       .col
-        .game-submit
-          %input.btn.btn-primary{ type: 'submit', value: 'Rotate to next player', |
-                                  data: {action: 'games#submit'} }
-
-
-  .row.other-player-screen{class: @is_player ? 'hidden' : '' }
-    .col
-      It's not your turn yet because
-      %span.player-name{data: {target: 'games.player'}}
-        #{@current_player.name}
-      is playing. To check if the turn has returned to you,
-  .row
-    .col
-      %button.btn.btn-primary
-        = link_to 'refresh this screen', play_game_path(@game)
-
-  .row.chat.newbox
-    .col.form-div
-      .title
-        Chat Box
-  .row
-    .col
-      %textarea#message-body
-    .col
-      %button.btn.btn-primary#message-submit{type: 'button'}
-        Submit
-  .row
-    .col
-      .chat-box#chat-box
+        %textarea#message-body
+      .col
+        %button.btn.btn-primary#message-submit{type: 'button'}
+          Submit
+    .row
+      .col
+        .chat-box#chat-box

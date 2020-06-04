@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     member do
       get :play
       get :rotate
+      get '/refresh/:user_id', action: :refresh
     end
   end
 
