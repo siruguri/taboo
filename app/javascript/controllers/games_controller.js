@@ -10,6 +10,8 @@ export default class extends Controller {
 
     $.ajax(`/games/${gameid}/refresh/${userid}`, {
       success: (d, s, x) => {
+        $(this.playerTarget).html(d.player_name)
+
         if(d.current_player_id == userid) {
           $('.other-player-screen').addClass('hidden')
           $('.current-player-screen').removeClass('hidden')
