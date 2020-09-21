@@ -6,6 +6,7 @@ class Game < ApplicationRecord
   has_many :players, class_name: 'User', through: :game_players, source: :user
 
   has_one :turn
+  has_one :title, as: :titleable
   belongs_to :current_word, class_name: 'Word', optional: true
 
   validates_presence_of :name
