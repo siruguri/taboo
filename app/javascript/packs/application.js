@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 import "src/chat";
 import "src/chatra_update";
+import "src/chaport_update";
 
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"

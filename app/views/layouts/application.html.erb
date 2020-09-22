@@ -8,18 +8,12 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script>
-      (function(d, w, c) {
-      w.ChatraID = 'xpND4Z85eAQXMo7Ds';
-      var s = d.createElement('script');
-      w[c] = w[c] || function() {
-      (w[c].q = w[c].q || []).push(arguments);
-      };
-      s.async = true;
-      s.src = 'https://call.chatra.io/chatra.js';
-      if (d.head) d.head.appendChild(s);
-      })(document, window, 'Chatra');
+     (function(w,d,v3){
+       w.chaportConfig = { appId : '5f5d6ae5a35a5571db09e933' };
 
-      window.addEventListener('turbolinks:load', function(e) { window.ChatraUpdate.updateChatra(); } );
+       if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
+
+      window.addEventListener('turbolinks:load', function(e) { window.ChaportUpdate.updateChaport(); } );
     </script>
   </head>
 

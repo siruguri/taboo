@@ -1,14 +1,14 @@
 declare var chaport: any;
 
-class ChatraUpdate {
+class ChaportUpdate {
   constructor() {
   }
 
-  updateChatra(): void {
+  updateChaport(): void {
     if (typeof chaport !== 'undefined') {
       chaport.q('startSession');
     }
   }
 }
 
-window["ChatraUpdate"] = new ChatraUpdate();
+window["ChaportUpdate"] = new ChaportUpdate();
